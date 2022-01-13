@@ -1,5 +1,5 @@
 (defvar oh/pandoc-template
-  "pandoc --to html5+smart --template=template.html --css tufte.css --self-contained -o out/%s %s")
+  "pandoc --to html5+smart --template=template.html --css tufte.css --self-contained -o docs/%s %s")
 
 (defun oh/pandoc-to-html (file &optional output)
   (shell-command
@@ -27,7 +27,7 @@
   (let* ((indx "index.org")
 	 (mainpage "main.org")
 	 (postdir "posts/")
-	 (posts (directory-files (concat "out/" postdir) nil "\\.html$")))
+	 (posts (directory-files (concat "docs/" postdir) nil "\\.html$")))
     (save-window-excursion
       (find-file indx)
       (erase-buffer)
