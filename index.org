@@ -3,6 +3,3 @@
 
 [[https://www.github.com/seungheonoh][Github]] 
 | [[file:posts/genesis.html][Genesis]] | In the beginning... | [EN Random] |
-| [[file:posts/test.html][nil]] |  | [] |
-| [[file:posts/test2.html][nil]] |  | [] |
-| [[file:posts/test3.html][nil]] |  | [] |
