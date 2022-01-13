@@ -1,0 +1,9 @@
+#+Title: Genesis
+#+Brief: In the beginning...
+#+Tags: EN Random
+
+#+DOWNLOADED: https://imgs.xkcd.com/comics/blogofractal.png @ 2022-01-13 17:27:38
+[[file:resources/2022-01-13_17-27-38_blogofractal.png]]
+
+I've decided to start a blog--why not? Here, it will be full of
+randomness and programming messes. 

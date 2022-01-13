@@ -1,5 +1,5 @@
 (defvar oh/pandoc-template
-  "pandoc --to html5+smart --template=template.html --css tufte.css --self-contained -o docs/%s %s")
+  "pandoc --to html5+smart --template=template.html --css tufte.css --self-contained --resource-path posts -o docs/%s %s")
 
 (defun oh/pandoc-to-html (file &optional output)
   (shell-command
@@ -43,15 +43,22 @@
 			       (concat postdir name ".org")
 			       "BRIEF"))
 		       (briefstring (if brief
-					(concat "    //  " brief)
+					brief
 				      ""))
+		       (tags (oh/get-org-keyword
+			      (concat postdir name ".org")
+			      "TAGS"))
+		       (tagstring (if tags
+				      tags
+				    ""))
 		       (title (if orgtitle
 				  orgtitle
 				(file-name-sans-extension pfile)))
-		       (entry (format "| [[file:%s][%s]] | %s |\n"
+		       (entry (format "| [[file:%s][%s]] | %s | [%s] |\n"
 				      ffull
 				      orgtitle
-				      briefstring)))
+				      briefstring
+				      tagstring)))
 		  (insert entry)))
 	      posts)
       (save-buffer))
@@ -60,4 +67,3 @@
 
 (oh/generate-files)
 (oh/generate-index)
-
