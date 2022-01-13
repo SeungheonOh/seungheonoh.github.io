@@ -1,0 +1,7 @@
+#+Title: Insert Blog Title Here
+#+Author: SeungheonOh
+
+[[https://www.github.com/seungheonoh][Github]] 
+| [[file:posts/test.html][TEST CASE TITLE]] |     //  something something |
+| [[file:posts/test2.html][Test2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]] |     //  Testing Tables |
+| [[file:posts/test3.html][PyAPL]] |  |
