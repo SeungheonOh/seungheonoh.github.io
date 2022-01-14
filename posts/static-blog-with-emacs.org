@@ -41,5 +41,5 @@ tags, image previews, and the list goes on--features that I don't need
 and don't think worth wasting time on...
 
 For future...
-- [ ] RSS feed, if there is XML library for ELisp
+- [X] RSS feed, if there is XML library for ELisp
 - [ ] Formated date on the post list

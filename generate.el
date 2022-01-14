@@ -1,3 +1,4 @@
+(straight-use-package 'webfeeder)
 (defvar oh/pandoc-template
   "pandoc --to html5+smart --template=template.html --css tufte.css --self-contained --resource-path posts -o docs/%s %s")
 
@@ -67,3 +68,14 @@
 
 (oh/generate-files)
 (oh/generate-index)
+
+(require 'webfeeder)
+(webfeeder-build
+ "rss.xml"
+ "./docs"
+ "https://seungheonoh.github.com"
+ (mapcar (lambda (s) (concat "posts/" s))
+	   (directory-files "docs/posts/" nil "\\.html$"))
+ :title "Insert Blog Title Here"
+ :description "Insert RSS Feed Here"
+ :builder 'webfeeder-make-rss)

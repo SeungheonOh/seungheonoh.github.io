@@ -1,6 +1,6 @@
 #+Title: Insert Blog Title Here
 #+Author: SeungheonOh
 
-[[https://www.github.com/seungheonoh][Github]] 
+[[https://www.github.com/seungheonoh][Github]] [[file:docs/rss.xml][RSS]]
 | [[file:posts/genesis.html][Genesis]] | In the beginning... | [EN Random] |
 | [[file:posts/static-blog-with-emacs.html][Staticblog with Emacs]] | Emacs&Pandoc powered blog? | [En Emacs] |
