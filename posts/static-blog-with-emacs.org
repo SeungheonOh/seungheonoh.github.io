@@ -1,0 +1,45 @@
+#+Title: Staticblog with Emacs
+#+Date: <2022-01-14 Fri>
+#+Brief: Emacs&Pandoc powered blog?
+#+TAGS: En Emacs
+
+Multiple options were available for building a static website: Hugo,
+Jekyll, ox-static. Most, however, require some extra tags, settings,
+or other tweaks to work with plain Emacs Org file.
+
+Seeing Pandoc--an awesome program that converts the document type
+flawlessly--converting Org files into a simple, good looking, and stand
+alone html pages made me choose Pandoc over other frameworks.
+
+Pandoc does not have incremental building or static cite builder; it
+is just a page generator. So, I wrote a simple script in Emacs Lisp to
+generate all htmls for posts in directory and also to generate the
+index page which contains all the links to posts. It's quite simple,
+so I wouldn't bother to explain it in detail.
+
+For the most part, Pandoc did its job terrifically. The rendered pages
+looks great and pages are linked correctly. The images are also
+rendered correctly; I used org-download with its download path set to
+"resources" to make it simple and easy to add resource path to
+Pandoc.
+
+#+begin_src elisp
+  (setq org-download-image-dir "./resources")
+#+end_src
+#+begin_src bash 
+  pandoc --to html5+smart         \ # Output format
+         --template=template.html \ # HTML Template to add home button
+         --css tufte.css          \ # CSS file used
+         --self-contained         \ # Embed css into html
+         --resource-path posts    \ # Resource path
+         -o docs/out.html         \ # Input
+            in.org 
+#+end_src
+
+It's missing some features other sites provide by default. Sort by
+tags, image previews, and the list goes on--features that I don't need
+and don't think worth wasting time on...
+
+For future...
+- [ ] RSS feed, if there is XML library for ELisp
+- [ ] Formated date on the post list
