@@ -1,0 +1,65 @@
+#+Title: Koka, Algebric Effect
+#+Brief: New way of keeping things pure
+#+date: <2022-01-27 Thu>
+#+Tags: EN AlgebricEffect 
+
+[[https://github.com/koka-lang/koka][Koka ]]is a new experimental language currently in research by MS
+lab. It utilizes of fairly new techique, Algebric Effect(AE), marking
+impurity inside of a purely functional languages. Unlike the good'ol
+Monads in Haskell, the AE uses handlers to "handle" possible
+effects; by handling the effect, the functions remains pure. This new
+alien idea of handling side effect was intriguing enough to make me
+try it.
+
+#+begin_center
+Caution! I am still fairly a newb in FP, have been suing in for only
+around 2 years. Be aware that informations her can partially(or
+entirely) incorrect. 
+#+end_center
+
+First, more discussion on the AE. In my understanding, Koka treats all
+effectful functions like an exception: they need to be taken care
+of. By providing interface for handlers, programmers can define what
+behavior is expected when they encounter effectful. Because the
+execution of the handler is outside of the "effectful" function, it is
+still pure.
+
+#+begin_src c
+  // Emitting messages; how to emit is TBD.  Just one abstract operation: emit.
+  effect fun emit(msg : string) : ()
+
+  // Emits a standard greeting.
+  fun hello()
+    emit("hello world!")
+
+  // Emits a standard greeting to the console.
+  pub fun hello-console1()
+    with handler
+      fun emit(msg) println(msg) 
+    hello()
+#+end_src
+
+Above code from the official website is a simple demonstration of
+effect handling. Here, =hello= function is the effectful function; the
+=emit= is the effectful operation. See how function =hello= is
+provided with the abstract operation =emit= which defined on the
+previous scope at =hello-console1=. Just like this, other effectful
+operations like =console=(Haskell's =IO=) and exceptions can be
+defined outside of the scope, making the operations inside of
+effectful functions remain pure. In my understanding, the effects are
+composable like functions; they claim it is cleaner then Haskell's
+Monad Transformers.
+
+In comparison to Monad, the AE's handler does not simplly "mark"
+function is effectful like Monad does. They actively resolves the side
+effects of function. As a result, the code looks more comprehansive(in
+my opinion).
+
+To conclude, Koka was a very interesting expreience. Writing simple
+functions felt really natural more comprehensive compared to
+Haskell--at least in my short trial. Yet, the lack of documentation
+over interfacing with other languges, C, JS, and C#, that Koka
+transcompiles into, imcomplete editor support, and rather shallow
+standard and public library hindered me from further using
+Koka. Now that I learned the basics of AE, I can't wait to see how AE
+will fit in more maturaed OCAML.

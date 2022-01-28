@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="generator" content="pandoc" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-					<title>Staticblog with Emacs</title>
+					<title>Koka, Algebric Effect</title>
 	<style>
 	 code{white-space: pre-wrap;}
   span.smallcaps{font-variant: small-caps;}
@@ -86,30 +86,29 @@
 	<a href="/">&lt;&lt;home&gt;&gt;</a>
 
 			<header id="title-block-header">
-	    <h1 class="title">Staticblog with Emacs</h1>
-	    	    	    	    <p class="date">&lt;2022-01-14 Fri&gt;</p>
+	    <h1 class="title">Koka, Algebric Effect</h1>
+	    	    	    	    <p class="date">&lt;2022-01-27 Thu&gt;</p>
 	    	</header>
-			<p>Multiple options were available for building a static website: Hugo, Jekyll, ox-static. Most, however, require some extra tags, settings, or other tweaks to work with plain Emacs Org file.</p>
-   <p>Seeing Pandoc–an awesome program that converts the document type flawlessly–converting Org files into a simple, good looking, and stand alone html pages made me choose Pandoc over other frameworks.</p>
-   <p>Pandoc does not have incremental building or static cite builder; it is just a page generator. So, I wrote a simple script in Emacs Lisp to generate all htmls for posts in directory and also to generate the index page which contains all the links to posts. It&#39;s quite simple, so I wouldn&#39;t bother to explain it in detail.</p>
-   <p>For the most part, Pandoc did its job terrifically. The rendered pages looks great and pages are linked correctly. The images are also rendered correctly; I used org-download with its download path set to &quot;resources&quot; to make it simple and easy to add resource path to Pandoc.</p>
-   <pre class="elisp"><code>(setq org-download-image-dir &quot;./resources&quot;)
-   </code></pre>
-   <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">--to</span> html5+smart         <span class="dt">\ </span># Output format</span>
-   <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>       <span class="ex">--template=template.html</span> <span class="dt">\ </span># HTML Template to add home button</span>
-   <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>       <span class="ex">--css</span> tufte.css          <span class="dt">\ </span># CSS file used</span>
-   <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>       <span class="ex">--self-contained</span>         <span class="dt">\ </span># Embed css into html</span>
-   <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>       <span class="ex">--resource-path</span> posts    <span class="dt">\ </span># Resource path</span>
-   <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       <span class="ex">-o</span> docs/out.html         <span class="dt">\ </span># Input</span>
-   <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>          <span class="ex">in.org</span> </span></code></pre></div>
-   <p>It&#39;s missing some features other sites provide by default. Sort by tags, image previews, and the list goes on–features that I don&#39;t need and don&#39;t think worth wasting time on…</p>
-   <p>For future…</p>
-   <ul class="task-list">
-   <li><input type="checkbox" disabled checked></input>
-   RSS feed, if there is XML library for ELisp</li>
-   <li><input type="checkbox" disabled></input>
-   Formated date on the post list</li>
-   </ul>
+			<p><a href="https://github.com/koka-lang/koka">Koka </a>is a new experimental language currently in research by MS lab. It utilizes of fairly new techique, Algebric Effect(AE), marking impurity inside of a purely functional languages. Unlike the good&#39;ol Monads in Haskell, the AE uses handlers to &quot;handle&quot; possible effects; by handling the effect, the functions remains pure. This new alien idea of handling side effect was intriguing enough to make me try it.</p>
+   <div class="center">
+   <p>Caution! I am still fairly a newb in FP, have been suing in for only around 2 years. Be aware that informations her can partially(or entirely) incorrect.</p>
+   </div>
+   <p>First, more discussion on the AE. In my understanding, Koka treats all effectful functions like an exception: they need to be taken care of. By providing interface for handlers, programmers can define what behavior is expected when they encounter effectful. Because the execution of the handler is outside of the &quot;effectful&quot; function, it is still pure.</p>
+   <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Emitting messages; how to emit is </span><span class="al">TBD</span><span class="co">.  Just one abstract operation: emit.</span></span>
+   <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>effect fun emit<span class="op">(</span>msg <span class="op">:</span> string<span class="op">)</span> <span class="op">:</span> <span class="op">()</span></span>
+   <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+   <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Emits a standard greeting.</span></span>
+   <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>fun hello<span class="op">()</span></span>
+   <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  emit<span class="op">(</span><span class="st">&quot;hello world!&quot;</span><span class="op">)</span></span>
+   <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+   <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Emits a standard greeting to the console.</span></span>
+   <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>pub fun hello<span class="op">-</span>console1<span class="op">()</span></span>
+   <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  with handler</span>
+   <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    fun emit<span class="op">(</span>msg<span class="op">)</span> println<span class="op">(</span>msg<span class="op">)</span> </span>
+   <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  hello<span class="op">()</span></span></code></pre></div>
+   <p>Above code from the official website is a simple demonstration of effect handling. Here, <code class="verbatim">hello</code> function is the effectful function; the <code class="verbatim">emit</code> is the effectful operation. See how function <code class="verbatim">hello</code> is provided with the abstract operation <code class="verbatim">emit</code> which defined on the previous scope at <code class="verbatim">hello-console1</code>. Just like this, other effectful operations like <code class="verbatim">console=(Haskell&#39;s =IO</code>) and exceptions can be defined outside of the scope, making the operations inside of effectful functions remain pure. In my understanding, the effects are composable like functions; they claim it is cleaner then Haskell&#39;s Monad Transformers.</p>
+   <p>In comparison to Monad, the AE&#39;s handler does not simplly &quot;mark&quot; function is effectful like Monad does. They actively resolves the side effects of function. As a result, the code looks more comprehansive(in my opinion).</p>
+   <p>To conclude, Koka was a very interesting expreience. Writing simple functions felt really natural more comprehensive compared to Haskell–at least in my short trial. Yet, the lack of documentation over interfacing with other languges, C, JS, and C#, that Koka transcompiles into, imcomplete editor support, and rather shallow standard and public library hindered me from further using Koka. Now that I learned the basics of AE, I can&#39;t wait to see how AE will fit in more maturaed OCAML.</p>
 		<br>
 	<a href="/">&lt;&lt;home&gt;&gt;</a>
     </body>
