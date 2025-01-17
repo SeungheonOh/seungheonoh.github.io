@@ -1,4 +1,4 @@
 #+Title: Blog
 #+Author: SeungheonOh
 
-[[https://www.github.com/seungheonoh][Github]] [[file:rss.xml][RSS]]
+[[https://www.github.com/seungheonoh][Github]] [[file:rss.xml][RSS]] [[file:docs/Resume.pdf][Resume]]
