@@ -1,7 +1,7 @@
 #+Title: Blog
 #+Author: SeungheonOh
 
-[[https://www.github.com/seungheonoh][Github]] [[file:rss.xml][RSS]] [[file:docs/Resume.pdf][Resume]]
+[[https://www.github.com/seungheonoh][Github]] [[file:rss.xml][RSS]] [[file:Resume.pdf][Resume]]
 | [[file:posts/genesis.html][Genesis]] | In the beginning... | [EN Random] |
 | [[file:posts/koka-AlgebricEffect.html][Koka, Algebric Effect]] | New way of keeping things pure | [EN AlgebricEffect] |
 | [[file:posts/static-blog-with-emacs.html][Staticblog with Emacs]] | Emacs&Pandoc powered blog? | [En Emacs] |
