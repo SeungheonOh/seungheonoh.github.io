@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>Insert Blog Title Here</title>
+<title>Blog</title>
 <description>Insert RSS Feed Here</description>
 <generator>Emacs webfeeder.el</generator>
 <link>https://seungheonoh.github.com</link>
 <atom:link href="https://seungheonoh.github.com/rss.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 28 Jan 2022 13:43:24 -0500</lastBuildDate>
+<lastBuildDate>Thu, 16 Jan 2025 22:29:40 -0600</lastBuildDate>
 <item>
   <title>Koka, Algebric Effect</title>
   <description><![CDATA[<nil></nil>]]></description>
   <link>https://seungheonoh.github.com/posts/koka-AlgebricEffect.html</link>
   <guid isPermaLink="false">https://seungheonoh.github.com/posts/koka-AlgebricEffect.html</guid>
-  <pubDate>Thu, 27 Jan 2022 00:00:00 -0500</pubDate>
+  <pubDate>Thu, 27 Jan 2022 00:00:00 -0600</pubDate>
 </item>
 <item>
   <title>Staticblog with Emacs</title>
   <description><![CDATA[<nil></nil>]]></description>
   <link>https://seungheonoh.github.com/posts/static-blog-with-emacs.html</link>
   <guid isPermaLink="false">https://seungheonoh.github.com/posts/static-blog-with-emacs.html</guid>
-  <pubDate>Fri, 14 Jan 2022 00:00:00 -0500</pubDate>
+  <pubDate>Fri, 14 Jan 2022 00:00:00 -0600</pubDate>
 </item>
 <item>
   <title>Genesis</title>
   <description><![CDATA[<nil></nil>]]></description>
   <link>https://seungheonoh.github.com/posts/genesis.html</link>
   <guid isPermaLink="false">https://seungheonoh.github.com/posts/genesis.html</guid>
-  <pubDate>Thu, 09 Jan 2003 00:00:00 -0500</pubDate>
+  <pubDate>Thu, 09 Jan 2003 00:00:00 -0600</pubDate>
 </item>
 </channel>
 </rss>

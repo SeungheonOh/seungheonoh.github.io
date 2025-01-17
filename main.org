@@ -1,4 +1,4 @@
-#+Title: Insert Blog Title Here
+#+Title: Blog
 #+Author: SeungheonOh
 
 [[https://www.github.com/seungheonoh][Github]] [[file:rss.xml][RSS]]

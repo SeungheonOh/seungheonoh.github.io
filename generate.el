@@ -76,6 +76,6 @@
  "https://seungheonoh.github.com"
  (mapcar (lambda (s) (concat "posts/" s))
 	   (directory-files "docs/posts/" nil "\\.html$"))
- :title "Insert Blog Title Here"
+ :title "Blog"
  :description "Insert RSS Feed Here"
  :builder 'webfeeder-make-rss)
